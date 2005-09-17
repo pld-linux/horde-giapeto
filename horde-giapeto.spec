@@ -1,18 +1,18 @@
 %define	_hordeapp giapeto
 #define	_rc		rc1
 %define	_snap	2005-09-17
-%define	_rel	0.1
+%define	_rel	0.3
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
-Name:		%{_hordeapp}
+Name:		horde-%{_hordeapp}
 Version:	0.1
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
 # Source0-md5:	26cdd6e1eabec51a1b38d551868ee6c8
-Source1:	%{name}.conf
+Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/giapeto/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.226
@@ -20,6 +20,7 @@ BuildRequires:	tar >= 1:1.15.1
 Requires:	apache >= 1.3.33-2
 Requires:	apache(mod_access)
 Requires:	horde >= 3.0
+Obsoletes:	%{_hordeapp}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
