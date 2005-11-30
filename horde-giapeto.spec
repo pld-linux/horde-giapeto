@@ -58,7 +58,7 @@ General Public License. Wiêcej informacji (w³±cznie z pomoc± dla
 Giapeto) mo¿na znale¼æ na stronie <http://www.horde.org/>.
 
 %prep
-%setup -q -c -T -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
+%setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
 tar zxf %{SOURCE0} --strip-components=1
 
 # considered harmful (horde/docs/SECURITY)
@@ -77,12 +77,12 @@ echo '<?php ?>' >		$RPM_BUILD_ROOT%{_sysconfdir}/conf.php
 cp -p config/conf.xml	$RPM_BUILD_ROOT%{_sysconfdir}/conf.xml
 touch					$RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
 
-cp -pR	lib/*			$RPM_BUILD_ROOT%{_appdir}/lib
-cp -pR	locale/*		$RPM_BUILD_ROOT%{_appdir}/locale
-cp -pR	templates/*		$RPM_BUILD_ROOT%{_appdir}/templates
-cp -pR	themes/*		$RPM_BUILD_ROOT%{_appdir}/themes
-cp -pR	bookmarks/*		$RPM_BUILD_ROOT%{_appdir}/bookmarks
-cp -pR	perms/*			$RPM_BUILD_ROOT%{_appdir}/perms
+cp -a	lib/*			$RPM_BUILD_ROOT%{_appdir}/lib
+cp -a	locale/*		$RPM_BUILD_ROOT%{_appdir}/locale
+cp -a	templates/*		$RPM_BUILD_ROOT%{_appdir}/templates
+cp -a	themes/*		$RPM_BUILD_ROOT%{_appdir}/themes
+cp -a	bookmarks/*		$RPM_BUILD_ROOT%{_appdir}/bookmarks
+cp -a	perms/*			$RPM_BUILD_ROOT%{_appdir}/perms
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
