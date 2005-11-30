@@ -120,7 +120,7 @@ fi
 %webapp_unregister httpd %{_webapp}
 
 %triggerpostun -- horde-%{_hordeapp} < 0.1-0.20050917.0.5
-for i in conf.php conf.xml mime_drivers.php; do
+for i in conf.php mime_drivers.php; do
 	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
 		mv -f %{_sysconfdir}/$i{,.rpmnew}
 		mv -f /etc/horde.org/%{_hordeapp}/$i.rpmsave %{_sysconfdir}/$i
