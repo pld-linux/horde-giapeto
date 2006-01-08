@@ -1,7 +1,7 @@
 %define	_hordeapp giapeto
 #define	_rc		rc1
-%define	_snap	2005-09-17
-%define	_rel	0.19
+%define	_snap	2006-01-08
+%define	_rel	0.1
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
@@ -12,7 +12,7 @@ Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	26cdd6e1eabec51a1b38d551868ee6c8
+# Source0-md5:	6985af50a5a72638e2d71da1db5c448f
 Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/giapeto/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
