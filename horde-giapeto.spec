@@ -1,7 +1,7 @@
 %define	_hordeapp giapeto
 #define	_rc		rc1
 %define	_snap	2005-09-17
-%define	_rel	0.18
+%define	_rel	0.19
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
@@ -113,7 +113,7 @@ fi
 %triggerun -- apache >= 2.0.0
 %webapp_unregister httpd %{_webapp}
 
-%triggerpostun -- horde-%{_hordeapp} < 0.1-0.20050917.0.5
+%triggerpostun -- horde-%{_hordeapp} < 0.1-0.20050917.0.5, %{_hordeapp}
 for i in conf.php mime_drivers.php; do
 	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
 		mv -f %{_sysconfdir}/$i{,.rpmnew}
