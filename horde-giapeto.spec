@@ -1,7 +1,7 @@
 %define	_hordeapp giapeto
 #define	_rc		rc1
 %define	_snap	2005-09-17
-%define	_rel	0.6
+%define	_rel	0.18
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
@@ -16,7 +16,7 @@ Source0:	ftp://ftp.horde.org/pub/snaps/%{_snap}/%{_hordeapp}-HEAD-%{_snap}.tar.g
 Source1:	%{_hordeapp}.conf
 URL:		http://www.horde.org/giapeto/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
-BuildRequires:	rpmbuild(macros) >= 1.264
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	tar >= 1:1.15.1
 Requires:	apache(mod_access)
 Requires:	horde >= 3.0
@@ -131,16 +131,12 @@ fi
 if [ -L /etc/apache/conf.d/99_horde-%{_hordeapp}.conf ]; then
 	/usr/sbin/webapp register apache %{_webapp}
 	rm -f /etc/apache/conf.d/99_horde-%{_hordeapp}.conf
-	if [ -f /var/lock/subsys/apache ]; then
-		/etc/rc.d/init.d/apache reload 1>&2
-	fi
+	%service -q apache reload
 fi
 if [ -L /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf ]; then
 	/usr/sbin/webapp register httpd %{_webapp}
 	rm -f /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd reload 1>&2
-	fi
+	%service -q httpd reload
 fi
 
 %files
