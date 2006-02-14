@@ -18,10 +18,8 @@ URL:		http://www.horde.org/giapeto/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	tar >= 1:1.15.1
-Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 Requires:	webapps
-Requires:	webserver = apache
 Obsoletes:	%{_hordeapp}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -80,8 +78,8 @@ cp -a lib locale templates themes bookmarks perms $RPM_BUILD_ROOT%{_appdir}
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
-install %{SOURCE1} $RPM_BUILD_ROOT%{_webapps}/%{_webapp}/apache.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_webapps}/%{_webapp}/httpd.conf
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,13 +89,13 @@ if [ ! -f %{_sysconfdir}/conf.php.bak ]; then
 	install /dev/null -o root -g http -m660 %{_sysconfdir}/conf.php.bak
 fi
 
-# CHECK FIRST DOES IT HAVE SQL AND FILE THERE.
 if [ "$1" = 1 ]; then
 %banner %{name} -e <<-EOF
 	IMPORTANT:
 	If you are installing Giapeto for the first time, You may need to
 	create the Giapeto database tables. To do so run:
-	zcat %{_docdir}/%{name}-%{version}/scripts/sql/%{_hordeapp}.sql.gz | mysql horde
+	zcat %{_docdir}/%{name}-%{version}/scripts/sql/%{_hordeapp}_stats.sql.gz | mysql horde
+	zcat %{_docdir}/%{name}-%{version}/scripts/sql/%{_hordeapp}_bookmarks.sql.gz | mysql horde
 EOF
 fi
 
