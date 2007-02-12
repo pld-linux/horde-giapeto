@@ -5,7 +5,7 @@
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
-Summary(pl):	System zarz±dzania tre¶ci± na WWW
+Summary(pl.UTF-8):   System zarzÄ…dzania treÅ›ciÄ… na WWW
 Name:		horde-%{_hordeapp}
 Version:	0.1
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
@@ -44,16 +44,16 @@ The Horde Project writes web applications in PHP and releases them
 under the GNU Public License. For more information (including help
 with Giapeto) please visit <http://www.horde.org/>.
 
-%description -l pl
-Giapeto to system zarz±dzania tre¶ci± na WWW (WCMS - Web-site Content
-Management System) dla Horde. Jego celem jest dostarczenie mo¿liwo¶ci
-tworzenia serwisów WWW du¿ej liczbie u¿ytkowników, zarz±dzaj±cych
-w³asnymi strefami uprawnieñ w sposób wystarczaj±co ³atwy dla osoby bez
-wykszta³cenia komputerowego.
+%description -l pl.UTF-8
+Giapeto to system zarzÄ…dzania treÅ›ciÄ… na WWW (WCMS - Web-site Content
+Management System) dla Horde. Jego celem jest dostarczenie moÅ¼liwoÅ›ci
+tworzenia serwisÃ³w WWW duÅ¼ej liczbie uÅ¼ytkownikÃ³w, zarzÄ…dzajÄ…cych
+wÅ‚asnymi strefami uprawnieÅ„ w sposÃ³b wystarczajÄ…co Å‚atwy dla osoby bez
+wyksztaÅ‚cenia komputerowego.
 
 Projekt Horde tworzy aplikacje WWW w PHP i wydaje je na licencji GNU
-General Public License. Wiêcej informacji (w³±cznie z pomoc± dla
-Giapeto) mo¿na znale¼æ na stronie <http://www.horde.org/>.
+General Public License. WiÄ™cej informacji (wÅ‚Ä…cznie z pomocÄ… dla
+Giapeto) moÅ¼na znaleÅºÄ‡ na stronie <http://www.horde.org/>.
 
 %prep
 %setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
