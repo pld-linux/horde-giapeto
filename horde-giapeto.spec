@@ -5,7 +5,7 @@
 
 %include	/usr/lib/rpm/macros.php
 Summary:	Web-site Content Management System
-Summary(pl.UTF-8):   System zarządzania treścią na WWW
+Summary(pl.UTF-8):	System zarządzania treścią na WWW
 Name:		horde-%{_hordeapp}
 Version:	0.1
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
